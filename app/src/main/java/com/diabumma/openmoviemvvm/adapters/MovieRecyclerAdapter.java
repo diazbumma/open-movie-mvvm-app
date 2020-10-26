@@ -1,58 +1,72 @@
 package com.diabumma.openmoviemvvm.adapters;
 
-public class MovieRecyclerAdapter {
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-    private String title;
-    private String year;
-    private String imdbId;
-    private String type;
-    private String posterUrl;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
-    public MovieRecyclerAdapter(String title, String year, String imdbId, String type, String posterUrl) {
-        this.title = title;
-        this.year = year;
-        this.imdbId = imdbId;
-        this.type = type;
-        this.posterUrl = posterUrl;
+import com.bumptech.glide.Glide;
+import com.diabumma.openmoviemvvm.R;
+import com.diabumma.openmoviemvvm.models.Movie;
+
+import java.util.List;
+
+public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdapter.MovieViewHolder> {
+
+    private List<Movie> movies;
+    private Context context;
+
+    public MovieRecyclerAdapter(List<Movie> movies) {
+        this.movies = movies;
     }
 
-    public String getTitle() {
-        return title;
+    @NonNull
+    @Override
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        View view = inflater.inflate(R.layout.movie_item, parent, false);
+
+        return new MovieViewHolder(view);
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
+        holder.bindData(movies.get(position));
     }
 
-    public String getYear() {
-        return year;
+    @Override
+    public int getItemCount() {
+        return movies.size();
     }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
+    class MovieViewHolder extends RecyclerView.ViewHolder {
 
-    public String getImdbId() {
-        return imdbId;
-    }
+        ImageView poster;
+        TextView title;
+        TextView year;
 
-    public void setImdbId(String imdbId) {
-        this.imdbId = imdbId;
-    }
+        public MovieViewHolder(@NonNull View itemView) {
+            super(itemView);
+            poster = itemView.findViewById(R.id.movie_poster_image);
+            title = itemView.findViewById(R.id.movie_title_text);
+            year = itemView.findViewById(R.id.movie_year_text);
+        }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getPosterUrl() {
-        return posterUrl;
-    }
-
-    public void setPosterUrl(String posterUrl) {
-        this.posterUrl = posterUrl;
+        void bindData(Movie movie) {
+            Glide
+                    .with(context)
+                    .load(movie.getPosterUrl())
+                    .fitCenter()
+                    .into(poster);
+            title.setText(movie.getTitle());
+            year.setText(movie.getYear());
+        }
     }
 }

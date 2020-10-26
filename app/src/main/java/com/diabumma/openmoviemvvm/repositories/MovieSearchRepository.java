@@ -1,16 +1,28 @@
 package com.diabumma.openmoviemvvm.repositories;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.diabumma.openmoviemvvm.models.Movie;
+import com.diabumma.openmoviemvvm.models.Search;
+import com.diabumma.openmoviemvvm.networks.MovieAPI;
+import com.diabumma.openmoviemvvm.networks.RetrofitInstance;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MovieSearchRepository {
+
+    private final String TAG = "MovieSearch Repository";
 
     private static MovieSearchRepository instance;
     private ArrayList<Movie> dataset = new ArrayList<>();
+    private MutableLiveData<List<Movie>> data = new MutableLiveData<>();
 
     public static MovieSearchRepository getInstance() {
         if (instance == null)
@@ -19,11 +31,34 @@ public class MovieSearchRepository {
         return instance;
     }
 
-    public MutableLiveData<List<Movie>> getMovies() {
-        setMovieDummies();
+    public MutableLiveData<List<Movie>> getMovies(String searchQuery) {
+        //setMovieDummies();
+        dataset.clear();
 
-        MutableLiveData<List<Movie>> data = new MutableLiveData<>();
-        data.setValue(dataset);
+        if (searchQuery.equals("")) {
+            data.setValue(dataset);
+            return data;
+        }
+
+        MovieAPI movieAPI = RetrofitInstance.getInstance().create(MovieAPI.class);
+        Call<Search> call = movieAPI.getMovieSearchList(MovieAPI.API_KEY, searchQuery);
+
+        call.enqueue(new Callback<Search>() {
+            @Override
+            public void onResponse(Call<Search> call, Response<Search> response) {
+                if (response.isSuccessful()) {
+                    Search search = response.body();
+                    dataset.addAll(search.getMovies());
+                    data.setValue(dataset);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Search> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
+
         return data;
     }
 

@@ -10,7 +10,8 @@
         android:id="@+id/search_movie_text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text">
+        android:inputType="text"
+        android:imeOptions="actionSearch">
     </EditText>
 
     <androidx.recyclerview.widget.RecyclerView

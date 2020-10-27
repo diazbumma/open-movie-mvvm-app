@@ -25,13 +25,13 @@ public class Movie {
     @Expose
     private String posterUrl;
 
-    public Movie(String title, String year, String imdbId, String type, String posterUrl) {
-        this.title = title;
-        this.year = year;
-        this.imdbId = imdbId;
-        this.type = type;
-        this.posterUrl = posterUrl;
-    }
+//    public Movie(String title, String year, String imdbId, String type, String posterUrl) {
+//        this.title = title;
+//        this.year = year;
+//        this.imdbId = imdbId;
+//        this.type = type;
+//        this.posterUrl = posterUrl;
+//    }
 
     public String getTitle() {
         return title;

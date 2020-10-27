@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.diabumma.openmoviemvvm.models.Movie;
 import com.diabumma.openmoviemvvm.models.Search;
-import com.diabumma.openmoviemvvm.networks.MovieAPI;
+import com.diabumma.openmoviemvvm.networks.OpenMovieAPI;
 import com.diabumma.openmoviemvvm.networks.RetrofitInstance;
 
 import java.util.ArrayList;
@@ -40,8 +40,8 @@ public class MovieSearchRepository {
             return data;
         }
 
-        MovieAPI movieAPI = RetrofitInstance.getInstance().create(MovieAPI.class);
-        Call<Search> call = movieAPI.getMovieSearchList(MovieAPI.API_KEY, searchQuery);
+        OpenMovieAPI openMovieAPI = RetrofitInstance.getInstance().create(OpenMovieAPI.class);
+        Call<Search> call = openMovieAPI.getMovieSearchList(OpenMovieAPI.API_KEY, searchQuery);
 
         call.enqueue(new Callback<Search>() {
             @Override
@@ -62,9 +62,9 @@ public class MovieSearchRepository {
         return data;
     }
 
-    private void setMovieDummies() {
-        dataset.add(new Movie("The Avengers", "2012", "tt0848228", "movie", "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"));
-        dataset.add(new Movie("Avengers: Infinity War", "2018", "tt4154756", "movie", "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"));
-        dataset.add(new Movie("Avengers: Endgame", "2019", "tt4154796", "movie", "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"));
-    }
+//    private void setMovieDummies() {
+//        dataset.add(new Movie("The Avengers", "2012", "tt0848228", "movie", "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"));
+//        dataset.add(new Movie("Avengers: Infinity War", "2018", "tt4154756", "movie", "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"));
+//        dataset.add(new Movie("Avengers: Endgame", "2019", "tt4154796", "movie", "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"));
+//    }
 }

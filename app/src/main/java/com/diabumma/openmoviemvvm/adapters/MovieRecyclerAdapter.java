@@ -1,6 +1,7 @@
 package com.diabumma.openmoviemvvm.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.diabumma.openmoviemvvm.MovieDetailActivity;
 import com.diabumma.openmoviemvvm.R;
 import com.diabumma.openmoviemvvm.models.Movie;
 
@@ -39,6 +41,16 @@ public class MovieRecyclerAdapter extends RecyclerView.Adapter<MovieRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         holder.bindData(movies.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = holder.itemView.getContext();
+                Intent intent = new Intent(context, MovieDetailActivity.class);
+
+                intent.putExtra("IMDB_ID", movies.get(position).getImdbId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

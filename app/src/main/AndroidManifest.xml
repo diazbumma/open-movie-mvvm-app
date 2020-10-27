@@ -13,11 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OpenMovieMVVM">
         <activity
-            android:name=".MovieDetailActivity"
-            android:theme="@style/MovieDetailStyle"/>
+            android:name=".MovieDetailActivity"/>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/MovieDetailStyle">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

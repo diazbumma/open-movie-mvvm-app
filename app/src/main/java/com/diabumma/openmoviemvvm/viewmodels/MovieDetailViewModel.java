@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.diabumma.openmoviemvvm.models.MovieDetail;
+import com.diabumma.openmoviemvvm.models.MovieDetailScore;
 import com.diabumma.openmoviemvvm.repositories.MovieDetailRepository;
 
 public class MovieDetailViewModel extends ViewModel {
 
-    private MutableLiveData<MovieDetail> movieDetailData;
+    private MutableLiveData<MovieDetailScore> movieDetailData;
     private MovieDetailRepository movieDetailRepository;
 
     public void initDetail(String imdbId) {
@@ -17,7 +17,7 @@ public class MovieDetailViewModel extends ViewModel {
         movieDetailData = movieDetailRepository.getMovieDetail(imdbId);
     }
 
-    public LiveData<MovieDetail> getDetail() {
+    public LiveData<MovieDetailScore> getDetail() {
         return movieDetailData;
     }
 }

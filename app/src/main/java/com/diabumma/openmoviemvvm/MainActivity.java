@@ -49,7 +49,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    viewModel.initSearch(searchMovieInput.getText().toString().trim());
+                    String query = searchMovieInput.getText().toString().trim();
+                    if (query.length() != 0) {
+                        viewModel.initSearch(query);
+                        showProgressBar();
+                    }
                     return true;
                 }
                 return false;
@@ -63,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 moviesArrayList.clear();
                 moviesArrayList.addAll(movies);
                 movieRecyclerAdapter.notifyDataSetChanged();
+                hideProgressBar();
             }
         });
 

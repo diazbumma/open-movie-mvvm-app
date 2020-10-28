@@ -48,7 +48,10 @@ public class MovieSearchRepository {
             public void onResponse(Call<Search> call, Response<Search> response) {
                 if (response.isSuccessful()) {
                     Search search = response.body();
-                    dataset.addAll(search.getMovies());
+
+                    if (search.getResponse().equals("True"))
+                        dataset.addAll(search.getMovies());
+
                     data.setValue(dataset);
                 }
             }

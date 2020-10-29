@@ -43,7 +43,7 @@
                 app:popupTheme="@style/Theme.AppCompat.Light"
                 app:layout_collapseMode="pin">
             </androidx.appcompat.widget.Toolbar>
-            
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -79,7 +79,7 @@
                         android:layout_centerInParent="true"
                         android:textSize="20sp"
                         android:textColor="@color/colorYellow"
-                        android:text="-">
+                        android:text="@string/empty_value">
                     </TextView>
 
                     <TextView
@@ -88,7 +88,7 @@
                         android:layout_below="@id/imdb_score"
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/colorAccent"
-                        android:text="imdb">
+                        android:text="@string/label_imdb">
                     </TextView>
 
                 </RelativeLayout>
@@ -107,7 +107,7 @@
                         android:layout_centerInParent="true"
                         android:textSize="20sp"
                         android:textColor="@color/colorRed"
-                        android:text="-">
+                        android:text="@string/empty_value">
                     </TextView>
 
                     <TextView
@@ -116,7 +116,7 @@
                         android:layout_below="@id/rotten_tomatoes_score"
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/colorAccent"
-                        android:text="Rotten Tomatoes">
+                        android:text="@string/label_rottenTomatoes">
                     </TextView>
 
                 </RelativeLayout>
@@ -135,7 +135,7 @@
                         android:layout_centerInParent="true"
                         android:textSize="20sp"
                         android:textColor="@color/colorAccent"
-                        android:text="-">
+                        android:text="@string/empty_value">
                     </TextView>
 
                     <TextView
@@ -144,7 +144,7 @@
                         android:layout_below="@id/metacritic_score"
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/colorAccent"
-                        android:text="Metacritic">
+                        android:text="@string/label_metacritic">
                     </TextView>
 
                 </RelativeLayout>
@@ -158,7 +158,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="Synopsis">
+                android:text="@string/label_synopsis">
             </TextView>
 
             <TextView
@@ -175,7 +175,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="Director">
+                android:text="@string/label_director">
             </TextView>
 
             <TextView
@@ -192,7 +192,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="Writers">
+                android:text="@string/label_writer">
             </TextView>
 
             <TextView
@@ -209,7 +209,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="Production Studio">
+                android:text="@string/label_studio">
             </TextView>
 
             <TextView
@@ -226,7 +226,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="Stars">
+                android:text="@string/label_stars">
             </TextView>
 
             <TextView
@@ -243,7 +243,7 @@
                 android:layout_marginBottom="8dp"
                 android:textSize="20sp"
                 android:textColor="@color/colorAccent"
-                android:text="Awards">
+                android:text="@string/label_awards">
             </TextView>
 
             <TextView
